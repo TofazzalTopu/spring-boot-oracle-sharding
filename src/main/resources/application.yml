@@ -1,14 +1,14 @@
 spring:
   jpa:
-    enabled: tre
+    enabled: true
   datasource:
     shard1:
-      jdbc-url: jdbc:oracle:thin:@10.99.53.30:1521:UATDB7
-      username: RBL_MOCK7
-      password: RBL_MOCK7
+      url: jdbc:oracle:thin:@db-shard-1:1521:orcl
+      username: shard1_user
+      password: shard1_pass
       driver-class-name: oracle.jdbc.OracleDriver
     shard2:
-      jdbc-url: jdbc:oracle:thin:@10.99.63.61:1521:uatdb4
-      username: RBL_BACPS
-      password: RBL_BACPS
+      url: jdbc:oracle:thin:@db-shard-2:1521:orcl
+      username: shard2_user
+      password: shard2_pass
       driver-class-name: oracle.jdbc.OracleDriver
