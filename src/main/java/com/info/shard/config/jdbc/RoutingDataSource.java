@@ -1,4 +1,4 @@
-package com.info.shard.config;
+package com.info.shard.config.jdbc;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

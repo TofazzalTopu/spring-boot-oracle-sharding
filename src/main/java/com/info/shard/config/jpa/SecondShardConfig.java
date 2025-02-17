@@ -1,4 +1,4 @@
-package com.info.shard.config;
+package com.info.shard.config.jpa;
 
 import javax.persistence.EntityManagerFactory;
 

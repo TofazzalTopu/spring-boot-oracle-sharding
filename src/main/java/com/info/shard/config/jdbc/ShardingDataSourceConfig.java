@@ -1,4 +1,4 @@
-package com.info.shard.config;
+package com.info.shard.config.jdbc;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
