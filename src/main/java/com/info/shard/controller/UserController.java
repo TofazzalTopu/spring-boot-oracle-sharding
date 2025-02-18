@@ -1,5 +1,6 @@
 package com.info.shard.controller;
 
+import com.info.shard.dto.UserDTO;
 import com.info.shard.entity.User;
 import com.info.shard.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,8 +28,8 @@ public class UserController {
 
     @PostMapping
     @Operation(summary = "Create a new user", description = "Adds a new user to the system")
-    public ResponseEntity<User> saveUser(@RequestBody User user) throws URISyntaxException {
-        return ResponseEntity.created(new URI("/users")).body(userService.saveUser(user));
+    public ResponseEntity<User> save(@Valid @RequestBody UserDTO user) throws URISyntaxException {
+        return ResponseEntity.created(new URI("/users")).body(userService.save(user));
     }
 
     @ApiResponse(description = "User not found")

@@ -1,6 +1,7 @@
 package com.info.shard.service;
 
 import com.info.shard.config.RoutingDataSource;
+import com.info.shard.dto.UserDTO;
 import com.info.shard.entity.User;
 import com.info.shard.mapper.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserServiceForJdbcTemplate {
 
 
     @Transactional
-    public void saveUserUsingJdbcTemplate(User user) {
+    public void save(UserDTO user) {
         RoutingDataSource.setShard(determineShard(user.getId()));
         String sql = "INSERT INTO USER_TEST (id, user_name) VALUES (?, ?)";
         jdbcTemplate.update(sql, user.getId(), user.getName());

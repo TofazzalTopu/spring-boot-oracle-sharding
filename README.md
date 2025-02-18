@@ -22,4 +22,8 @@ Important Points:</br>
 Swagger URI: </br>
 ```
 http://localhost:8080/swagger-ui/index.html
+http://localhost:8080/v3/api-docs
 ```
+
+Additional Data Type Validations: </br>
+![img.png](img.png)

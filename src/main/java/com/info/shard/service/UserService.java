@@ -1,5 +1,6 @@
 package com.info.shard.service;
 
+import com.info.shard.dto.UserDTO;
 import com.info.shard.entity.User;
 import com.info.shard.repository.shard1.UserRepositoryShardOne;
 import com.info.shard.repository.shard2.UserRepositoryShardTwo;
@@ -26,7 +27,7 @@ public class UserService {
     }
 
     @Transactional
-    public User saveUser(User usr) {
+    public User save(UserDTO usr) {
         User user = new User(usr.getId(), usr.getName());
         return (User) userRepository(usr.getId()).save(user);
     }
