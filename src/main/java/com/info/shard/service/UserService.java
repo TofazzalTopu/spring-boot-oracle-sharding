@@ -26,13 +26,9 @@ public class UserService {
     }
 
     @Transactional
-    public User saveUser(Long userId, String name) {
-        User user = new User(userId, name);
-        return (User) userRepository(userId).save(user);
-    }
-
-    private String determineShard(Long userId) {
-        return (userId <= 1000) ? "shard1" : "shard2";
+    public User saveUser(User usr) {
+        User user = new User(usr.getId(), usr.getName());
+        return (User) userRepository(usr.getId()).save(user);
     }
 
     public Optional<User> getUser(Long userId) {

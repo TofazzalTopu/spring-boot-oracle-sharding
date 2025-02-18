@@ -18,3 +18,8 @@ Important Points:</br>
 ✅ Spring Boot's AbstractRoutingDataSource helps dynamically switch between shards.
 ✅ Application-level sharding is useful when Oracle's built-in sharding isn't available.
 ```
+
+Swagger URI: </br>
+```
+http://localhost:8080/swagger-ui/index.html
+```

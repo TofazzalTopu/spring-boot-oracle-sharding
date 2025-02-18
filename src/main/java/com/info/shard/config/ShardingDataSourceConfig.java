@@ -11,31 +11,31 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Configuration
+@Configuration
 public class ShardingDataSourceConfig {
 
-    @Bean(name = "shard1DataSource")
+    @Bean(name = "shardOneDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.shard1")
-    public DataSource shard1DataSource() {
+    public DataSource shardOneDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Bean(name = "shard2DataSource")
+    @Bean(name = "shardTwoDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.shard2")
-    public DataSource shard2DataSource() {
+    public DataSource shardTwoDataSource() {
         return DataSourceBuilder.create().build();
     }
 
     @Bean(name = "routingDataSource")
-    public DataSource routingDataSource(@Qualifier("shard1DataSource") DataSource shard1,
-                                        @Qualifier("shard2DataSource") DataSource shard2) {
+    public DataSource routingDataSource(@Qualifier("shardOneDataSource") DataSource shardOne,
+                                        @Qualifier("shardTwoDataSource") DataSource shardTwo) {
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put("shard1", shard1);
-        targetDataSources.put("shard2", shard2);
+        targetDataSources.put("shardOne", shardOne);
+        targetDataSources.put("shardTwo", shardTwo);
 
         RoutingDataSource routingDataSource = new RoutingDataSource();
         routingDataSource.setTargetDataSources(targetDataSources);
-        routingDataSource.setDefaultTargetDataSource(shard1);
+        routingDataSource.setDefaultTargetDataSource(shardOne);
         return routingDataSource;
     }
 
