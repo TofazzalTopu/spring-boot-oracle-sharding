@@ -5,7 +5,6 @@ import com.info.shard.entity.User;
 import com.info.shard.service.UserServiceForJdbcTemplate;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +19,11 @@ import java.net.URISyntaxException;
 @Tag(name = "User Management", description = "Endpoints for managing users")
 public class UserControllerForJdbcTemplate {
 
-    @Autowired
-    private UserServiceForJdbcTemplate saveUserUsingJdbcTemplate;
+    private final UserServiceForJdbcTemplate saveUserUsingJdbcTemplate;
+
+    public UserControllerForJdbcTemplate(UserServiceForJdbcTemplate saveUserUsingJdbcTemplate) {
+        this.saveUserUsingJdbcTemplate = saveUserUsingJdbcTemplate;
+    }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Create a new user", description = "Adds a new user to the system")

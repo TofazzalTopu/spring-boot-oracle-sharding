@@ -1,6 +1,6 @@
 package com.info.shard.service;
 
-import com.info.shard.config.RoutingDataSource;
+import com.info.shard.config.jdbc.RoutingDataSource;
 import com.info.shard.dto.UserDTO;
 import com.info.shard.entity.User;
 import com.info.shard.mapper.UserRowMapper;

@@ -23,13 +23,17 @@ import java.util.Optional;
 @Tag(name = "User Management", description = "Endpoints for managing users")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping
     @Operation(summary = "Create a new user", description = "Adds a new user to the system")
     public ResponseEntity<User> save(@Valid @RequestBody UserDTO user) throws URISyntaxException {
-        return ResponseEntity.created(new URI("/users")).body(userService.save(user));
+        return ResponseEntity.created(new URI("/")).body(userService.save(user));
     }
 
     @ApiResponse(description = "User not found")

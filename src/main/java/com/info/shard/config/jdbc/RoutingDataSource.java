@@ -10,9 +10,16 @@ public class RoutingDataSource extends AbstractRoutingDataSource {
         contextHolder.set(shard);
     }
 
+    public static Object getCurrentShard() {
+        return contextHolder.get();
+    }
+
     @Override
     protected Object determineCurrentLookupKey() {
         return contextHolder.get();
     }
 
+    public static void clear() {
+        contextHolder.remove(); // Ensures thread-local data is cleared
+    }
 }
